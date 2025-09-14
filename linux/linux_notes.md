@@ -1,8 +1,8 @@
 # Linux File System
 <img width="950" height="450" alt="image" src="https://github.com/user-attachments/assets/35861e58-9f07-4ce1-8c53-8142c8b226a0" />
-The Linux file system is the structure Linux uses to organize and manage all files, with everything starting from the root /. It exists so data isn’t just raw 1s and 0s but stored in an orderly, secure, and accessible way.
+The Linux file system is the structure Linux uses to organize and manage all files, with everything starting from the root /. It exists so data isn’t just raw 1s and 0s but stored in an orderly, secure, and accessible way.\
 
-You need to know it because it helps you navigate the system, troubleshoot problems, manage permissions, and run services
+You need to know it because it helps you navigate the system, troubleshoot problems, manage permissions, and run services\
 
 Here are some of the of the linux files and their purpose:
 - /bin= contains essential user commands
@@ -15,7 +15,7 @@ Here are some of the of the linux files and their purpose:
 - /mnt & /media= mont points for external drives
 - /boot =Bootloader files
   
-###Host name VS Username
+### Host name VS Username
 `alice@server1:~$`
 alice → username (the account you logged in as).\
 server1 → hostname (the computer you connected to).\
@@ -56,27 +56,27 @@ Use sudo to temporarily become root for a command.
 `uptime` #shows how longthe system has been running since last reboot.\
 `uptime-s` #shows you the exact date and time the system was started\
 `history` #Shows a list of commands you have run on the shell. If you want to run any of the commands in the list, you just type a bang(!) followed by the number. EG:!12\
-`env` #prints all environment variables
+`env` #prints all environment variables\
 `echo $HISTSIZE` #Displays history size( last number of commands the shell remembers)\
 `man <command>` #shows documentation for a command\
 `mv<oldname> <newname>` #to rename a file\
 `mv<file> <new directory>` #to move a file
 `rm` #to delete a file. This alone cannot be used to remove a directory\
-`rm -r` # r means recursive. So it would delete the directory and its content
-`rm -i`# i means interactive. So it would ask for confirmation before deletion
-`rm -f` # f means force
-`rm -ir` # recursive and interactive. for directories
-`rm -d` #to delete an empty directory
-`&&` #to run multiple commands in a line EG: `mkdir tuesday && cd tuesday`
-`rmdir` to remove empty directory
-`nano <newfilename>` to create a new file by opening the GNU nana editor for you to make changes
-`touch <file name>` It is used to create empty files and edit timestamp of a file
+`rm -r` # r means recursive. So it would delete the directory and its content\
+`rm -i`# i means interactive. So it would ask for confirmation before deletion \
+`rm -f` # f means force \
+`rm -ir` # recursive and interactive. for directories \
+`rm -d` #to delete an empty directory \
+`&&` #to run multiple commands in a line EG: `mkdir tuesday && cd tuesday` \
+`rmdir` to remove empty directory \
+`nano <newfilename>` to create a new file by opening the GNU nana editor for you to make changes \
+`touch <file name>` It is used to create empty files and edit timestamp of a file \
 `ls -l` shows details of the files in a directory. So It would help us know if a file is a file, directory, symbolic link, socket, etc.\
-`nano <filename>` opens text based editor. ie: A new file has been created
-`vi <file.txt>` to open file.txt in text editor
+`nano <filename>` opens text based editor. ie: A new file has been created \
+`vi <file.txt>` to open file.txt in text editor \
 
 ##File Descriptors
-File descriptor is a number that represents an open file, device, socket or pipe.
+File descriptor is a number that represents an open file, device, socket or pipe.\
 When you run any program in Linux, the system automatically gives it three 'communication channels' to work with:
 1. stdin(0)- a channel for input. eg. your keyboard
 2. stdout(1)-a channel for normal output. eg. your screen
@@ -84,12 +84,12 @@ When you run any program in Linux, the system automatically gives it three 'comm
 
    So for example when you run `ls /etc` , the ls process is created.\
    Linux gives it 3 file descriptors\
-   ls uses stdout(1) to print the list of files
+   ls uses stdout(1) to print the list of files\
 
    If you run `ls /fakepath`, this would file. This time, it sends the error message to stderr(2) instead of stdout.
 
 
-##Redirection with file descriptors
+### Redirection with file descriptors
 
 You can redirect input output streams using file descriptors:
 - redirect stdout(1) to a file:
@@ -154,6 +154,7 @@ Example:
 
 `groups` to check group of the user\
 `cat etc/group` to print all the groups in your system\
+`sudo groupmod -n newgroup oldgroup` to change the groupname/
 `cat etc/passwd` It’s a text file that stores information about all users on the system.\
 `useradd -u 2020` the -u flage helps you customize the user iD
 `id<username>` Shows your user ID (UID), group ID (GID), and groups you belong to
@@ -247,3 +248,71 @@ These three permissions are usually shown for:
 - Owner (user who owns the file)
 - Group (users in the file’s group)
 - Others (everyone else)
+
+  `-rwxr-xr--`
+Breakdown:
+rwx → owner has read, write, execute\
+r-x → group has read and execute\
+r-- → others have read only\
+👉 In short: rwx defines who can do what with a file or directory.
+
+
+*When you run ls -l, it lists files and directories in long format. Let’s break down what each part means.*
+`-rwxr-xr--  1 alice devs   2456 Sep 14 10:30 script.sh`\
+Breakdown:\
+`-rwxr-xr--` → File type + permissions\
+First character: file type\
+`-` = regular file\
+`d`= directory\
+`l` = symbolic link\
+Next 9 chars: permissions (rwx for owner, r-x for group, r-- for others).\
+
+1 → Link count; Number of hard links to the file.\
+alice → Owner ;User who owns the file.\
+devs → Group; Group associated with the file.\
+2456 → File size in bytes; How large the file is.
+Sep 14 10:30 → Modification time: Last time the file was modified.\
+script.sh → File name\
+`ls -l` gives you permissions, owner, group, size, time, and name of each file.\
+
+`chmod` is one of the most important Linux commands because it lets you change file or directory permissions.
+#### Two Ways to Use chmod
+1. Symbolic Mode
+You specify who and what permissions to add/remove/change.
+Who:
+u = user (owner)\
+g = group\
+o = others\
+a = all (user + group + others)\
+
+What:
++ = add permission\
+- = remove permission\
+= = set exact permission\
+
+Example:
+`chmod u+x script.sh `  # add execute for user
+`chmod g-w file.txt `   # remove write for group
+`chmod o=r file.txt  `  # set others to read only
+`chmod a+rw data.log `  # give read/write to everyone
+
+
+2. Numeric (Octal) Mode\
+Uses numbers to represent permissions:\
+Permission	Number\
+read (r)	4\
+write (w)	2\
+execute (x)	1\
+
+You add them up per category (user, group, others).\
+
+Example:\
+`rwx` = 7 (4+2+1)\
+`rw-` = 6 (4+2+0)\
+`r--` = 4 (4+0+0)\
+
+So:\
+`chmod 755 script.sh`   # rwx for user, r-x for group, r-x for others\
+`chmod 644 file.txt`    # rw- for user, r-- for group, r-- for others\
+`chmod 600 secret.key`  # rw- for user only\
+
