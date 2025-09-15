@@ -53,7 +53,7 @@ Use sudo to temporarily become root for a command.
 `sudo -i` #gives you full root shell until you exit\
 `sudo apt` #advanced package tool. It's how you install,remove, update and manage software on Ubuntu\
 `sudo nmtui` #network manager's text interface. It is  also used to edit hostname\
-`uptime` #shows how longthe system has been running since last reboot.\
+`uptime` #shows how long the system has been running since last reboot.\
 `uptime-s` #shows you the exact date and time the system was started\
 `history` #Shows a list of commands you have run on the shell. If you want to run any of the commands in the list, you just type a bang(!) followed by the number. EG:!12\
 `env` #prints all environment variables\
@@ -110,6 +110,7 @@ You can redirect input output streams using file descriptors:
 
  ### ways of viewing file content
  `cat` shows the entire file content at once\
+ `tac` reads a file and prints its contents line by line, but in reverse order (last line first).\
  `head <filename.txt>` shows the first 10 lines of a file by default. \
  `head -n 5 file.txt` shows you the 1st 5\
  `tail` shows the last lines of a file. You can also specify the number of lines you want to see by using the `-n` flag.\
@@ -313,4 +314,75 @@ So:\
 `chmod 755 script.sh`   # rwx for user, r-x for group, r-x for others \
 `chmod 644 file.txt`    # rw- for user, r-- for group, r-- for others \
 `chmod 600 secret.key`  # rw- for user only
+
+`sudo chown [options] <new_owner>:<new_group> <file>` to change file ownwership in linux
+- new_owner → the user who will own the file
+- new_group (optional) → the group that will own the file
+- If you don’t specify group, only the owner changes.
+
+  `sudo chown -R alice:devs /project` It means the ownership change will apply to the directory and everything inside it
+  - Changes ownership of /project directory itself.
+  - Changes ownership of all files and folders inside /project.
+  - Now alice is the owner and devs is the group everywhere inside.
+
+ `alias` is a shortcut creator for commands in Linux.\
+ `alias ll`= 'ls -l' Now typing ll runs ls -l.
+ 
+`sudo !!`
+- !! = runs the last command from your history.
+- Prepending with sudo re-runs the last command with root privileges.
+
+`grep` is a search tool — it finds and shows only the lines that match the word or pattern you’re looking for.\
+`grep "error" logfile.txt` Shows all lines in logfile.txt that contain "error".\
+`grep -i` searches text without caring about case, so "Error", "error", and "ERROR" are treated the same.
+
+the `|` symbol in Linux is called a pipe.
+- It takes the output of one command and feeds it as input to another command.
+- So instead of saving output to a file first, you can chain commands together.
+
+Send output of `ls` into `less` (scrollable view):\
+`ls -l | less`
+
+Find specific text inside output: \
+`ps aux | grep firefox` (Finds processes with “firefox” in them.)
+
+`find [path] -name "pattern"` the find command is used to search for files and directories in Linux \
+`[path] `→ where to start searching (use . for current directory) \
+`-name "pattern"` → filename to search for (supports wildcards like *)
+
+`which` shows the full path of the executable that will run when you type a command.
+It searches your PATH environment variable and tells you where the command lives.
+
+
+## Shell Scripting
+All Shell Script files when creating, you must add the `.sh` extention. Why?`.sh` tells humans (and sometimes tools) that the file is a shell script.
+
+*A script* is a text file containing a list of commands that the computer can execute in order, automatically, instead of typing them one by one in the terminal.
+- Think of it like a recipe: a list of steps that the computer follows.
+- Scripts are used to automate repetitive tasks.
+
+`sleep` pauses execution for a specified amount of time.
+Often used in scripts to wait before running the next command.
+
+### Ways to run a shell script
+1. Using bash (or sh):\
+ `bash script.sh`
+- Runs the script using the bash interpreter.
+- The script doesn’t need execute permission (chmod +x) when using this method.
+
+2. Using ./ (direct execution)
+`./script.sh`
+- Runs the script directly as a program.
+- The script must be executable
+
+####  #!/bin/bash
+`#!/bin/bash` tells the system which interpreter should run the script — in this case, the Bash shell. \
+You indicate the shebang (#!) on the very first line of your script file. \
+Example: \
+`#!/bin/bash` \
+`echo "Hello, world!"`
+
+The characters `#!` at the very start of a script file are called a shebang. \
+Everything after it is *the path to the interpreter* that should run the script. \
+So #! /bin/bash means: “use the Bash program located at /bin/bash to run this script.”                                                                                                                                                                                                                                            
 
