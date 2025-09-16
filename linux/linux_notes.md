@@ -355,37 +355,8 @@ It searches your PATH environment variable and tells you where the command lives
 
 `whatis` gives you a one-line description of a command by pulling info from the manual (man) pages.
 
-## Shell Scripting
-All Shell Script files when creating, you must add the `.sh` extention. Why?`.sh` tells humans (and sometimes tools) that the file is a shell script.
-
-*A script* is a text file containing a list of commands that the computer can execute in order, automatically, instead of typing them one by one in the terminal.
-- Think of it like a recipe: a list of steps that the computer follows.
-- Scripts are used to automate repetitive tasks.
-
 `sleep` pauses execution for a specified amount of time.
 Often used in scripts to wait before running the next command.
-
-### Ways to run a shell script
-1. Using bash (or sh):\
- `bash script.sh`
-- Runs the script using the bash interpreter.
-- The script doesn’t need execute permission (chmod +x) when using this method.
-
-2. Using ./ (direct execution)
-`./script.sh`
-- Runs the script directly as a program.
-- The script must be executable
-
-####  #!/bin/bash
-`#!/bin/bash` tells the system which interpreter should run the script — in this case, the Bash shell. \
-You indicate the shebang (#!) on the very first line of your script file. \
-Example: \
-`#!/bin/bash` \
-`echo "Hello, world!"`
-
-The characters `#!` at the very start of a script file are called a shebang. \
-Everything after it is *the path to the interpreter* that should run the script. \
-So #! /bin/bash means: “use the Bash program located at /bin/bash to run this script.”       
 
 #### Package Manager
 A package manager is a tool in Linux (and other OSes) that automates the process of installing, upgrading, configuring, and removing software. Instead of manually downloading software from websites, you use a package manager to fetch it from a trusted repository.
@@ -421,14 +392,8 @@ you should always run:`sudo apt update` before installing anything with apt beca
 
 `sudo apt-get install tree -y`
 
-Use the `-y` flag whenever you want the system to automatically accept all prompts during package operations, which is especially useful in scripts or batch installs.
 
 `which bash` shows the full path to the bash executable that your system will use when you run the shell. In other words it shows the path where the bash command is. It would return: `/bin/bash`
-
-`#`comment is used to write notes in scripts or configs so Linux ignores that line.
-
-*A variable* in Linux is just a name that holds a value so you can reuse it in commands or scripts\
-Make your variables UPPERCASE always.
 
 
 
