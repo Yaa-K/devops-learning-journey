@@ -202,3 +202,128 @@ if [ -s $file ]; then
     echo "$file is not empty"
 fi
 ```
+
+In shell scripting, `case` is like a more powerful version of `if-elif-else` — it lets you match a variable or expression against multiple patterns.
+
+```
+Syntax:
+case WORD in
+    PATTERN_1)
+        commands
+        ;;
+    PATTERN_2)
+        commands
+        ;;
+    *)
+        default_commands
+        ;;
+esac
+```
+Explanation:
+- `WORD` → the variable or value you’re checking.
+- `PATTERN` → can be literal values (yes, no) or even wildcards (*.txt, file[0-9]).
+- `;;` → marks the end of a block.
+- `*) `→ is the default (like else).
+- `esac` → ends the case block (notice it’s case spelled backwards).
+
+```
+#!/bin/bash
+
+read -p "Do you want to continue? " answer
+
+case $answer in
+    yes|Yes|Y|y)
+        echo "You chose YES ✅"
+        ;;
+    no|No|N|n)
+        echo "You chose NO ❌"
+        ;;
+    *)
+        echo "Invalid response 🤔"
+        ;;
+esac
+
+```
+`case` lets you separate multiple acceptable values with `|`
+
+#### When to use if and when to use case
+- Use `if` for numeric comparisons, ranges, and simple true/false checks.
+- Use `case` when you have many string or pattern-based options.
+
+#### For loop and While loop
+`For` Loop \
+Best for: when you know how many times you want to run something.
+Syntax:
+```
+for i in 1 2 3 4 5
+do
+    echo "Number: $i"
+done
+
+```
+
+Example use: iterating through a list of files, numbers, or users.
+```
+for file in *.txt
+do
+    echo "Processing $file"
+done
+```
+
+`While` loop
+Best for: when you don’t know how many times it will run — it keeps going *as long as a condition is true*.
+
+Syntax:
+```
+count=1
+while [ $count -le 5 ]
+do
+    echo "Number: $count"
+    ((count++))
+done
+```
+
+Until Loop
+Works like a while loop, but the condition is the opposite.
+A `while` loop runs while the condition is true.
+An `until` loop runs until the condition becomes true (i.e., it keeps looping while the condition is false
+```
+until [ condition ]
+do
+    # commands
+done
+```
+Memory Trick
+- `While` = true loop → keeps running while the condition is true. 
+- `Until` = false loop → keeps running until the condition becomes true (so while it’s false).
+
+`-- ` decrement \
+`++` incremental
+
+
+#### While loop example
+```
+while IFS=: read -r USERNAME
+do
+    echo "User: $USERNAME"
+done < /etc/passwd
+```
+**What is IFS?**
+IFS stands for *Internal Field Separator*.
+
+**It’s not a command** — it’s a special shell variable that tells the shell:
+👉 “When splitting text into words, use this character as the separator.” 
+
+By default, IFS = space, tab, newline. \
+If you set IFS=: then the shell splits text using : instead of spaces. \
+IFS is like telling Bash: “Hey, don’t cut text at spaces, cut it at colons (or commas, or whatever I choose)
+
+- `read -r USERNAME` → reads the first field of each line into the variable USERNAME.
+
+- `/etc/passwd `is a system file with user account info, formatted like this:
+```
+root:x:0:0:root:/root:/bin/bash
+user1:x:1000:1000:User One:/home/user1:/bin/bash
+```
+- In each line, the first field is the username (root, user1, etc.).
+
