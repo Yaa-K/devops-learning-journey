@@ -72,3 +72,53 @@ Use the `-y` flag whenever you want the system to automatically accept all promp
 
 *A variable* in Linux is just a name that holds a value so you can reuse it in commands or scripts\
 Make your variables UPPERCASE always.
+
+### Practice Script from Class
+
+<figure>
+  <img width="1193" height="754" alt="image" src="https://github.com/user-attachments/assets/8a3625f6-b5ce-4bd7-a87e-f02e1dbb28ad" />
+  <figcaption>Figure 1: This is a simple script that contains some comments(what is in blue) and an echo command that would print the string once this script is run.</figcaption>
+</figure> 
+
+
+<br><br>
+
+ <figure>
+  <img width="1193" height="767" alt="image" src="https://github.com/user-attachments/assets/d519b11b-cf20-4625-a5d2-2d49f12d133e" />
+  <figcaption>Figure 2:This is a modification from the 1st image. This time, a variable 'NAME' was defined and placed in the string as $NAME </figcaption>
+</figure>
+
+In Linux shell scripting (bash, zsh, etc.), the dollar sign `$` is used to tell the shell "this is a variable, not just plain text."
+
+To make the script a bit dynamic we would want to take input from the user. We can do that by using the `read` command.
+
+`read -p "Prompt message: " VARIABLE`
+- `read` → command to take input from the user.
+- `-p` → lets you display a prompt message before waiting for input.
+- `"What's your name?:"` → the prompt that will show to the user.
+- `VARIABLE `→ the variable where the input is stored.
+
+  You would see `read` in action from the below image.
+
+  <img width="1194" height="767" alt="image" src="https://github.com/user-attachments/assets/b5c4b2ed-04df-4157-b4cc-3d82a818c519" />
+
+#### Conditional Statements
+```
+if [ condition ]; then
+    # commands if condition is true
+elif [ another_condition ]; then
+    # commands if the elif condition is true
+else
+    # commands if none of the conditions are true
+fi
+```
+- `if` starts the block.
+- `elif` means "else if" (you can have many of them).
+- `else` runs if none of the above are true.
+- `fi` closes the block (like endif in other languages).
+
+Pro tip: In VS code, to comment multiple lines, this is the shortcut `Ctrl + /`
+
+
+
+
