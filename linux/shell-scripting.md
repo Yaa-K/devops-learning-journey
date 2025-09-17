@@ -300,7 +300,7 @@ Memory Trick
 `-- ` decrement \
 `++` incremental
 
-
+---------------------------------------------------------------------------------------------------------------
 #### While loop example
 ```
 while IFS=: read -r USERNAME
@@ -326,4 +326,81 @@ root:x:0:0:root:/root:/bin/bash
 user1:x:1000:1000:User One:/home/user1:/bin/bash
 ```
 - In each line, the first field is the username (root, user1, etc.).
+
+ `read` read takes input (from the keyboard, a file, or a pipe) and stores it in variables. \
+Example:
+```
+read name
+```
+
+If you type: \
+`Yaa` \
+Then $name = Yaa. ✅
+
+`read -r` this tells Bash to read input exactly as it is, without interpreting backslashes (\) as escape characters. This is important because without -r, backslashes in file paths, strings, or text could be misinterpreted or removed, leading to incorrect values.
+
+`done` → closes the while (or until) loop.
+`< /etc/passwd `→ this is called input redirection. \
+It tells the loop: “Take your input from the file /etc/passwd instead of the keyboard.”
+
+- `read`  reads only one line at a time from its input.
+- So even though `< /etc/passwd` feeds the entire file into the loop, each iteration of the while loop only consumes one line.
+- After processing that line (running the commands inside the loop), read automatically moves to the next line.
+------------------------------------------------------------------------------------
+#### Brace Expansion
+What is Brace Expansion? \
+Brace expansion is a way to generate multiple strings or sequences using {}. \
+The shell expands it before executing the command, so you don’t have to type everything manually.\
+Brace expansion is just text generation, the shell expands it before running the command.
+
+- Example 1: Creating multiple directories
+```
+mkdir project/{src,bin,doc}
+```
+
+Expands to:
+```
+mkdir project/src project/bin project/doc
+```
+Creates three directories in one command.
+
+- ✅ Example 2: Number sequences
+ ```
+echo file{1..5}.txt
+```
+Output:
+```
+file1.txt file2.txt file3.txt file4.txt file5.txt
+```
+
+- ✅ Example 3: Combining letters and numbers
+```
+echo user{A..C}{1..2}
+```
+Output:
+```
+userA1 userA2 userB1 userB2 userC1 userC2
+```
+
+Example 4: To create multiple files at once
+`````
+touch file{1..5}.docs
+````````
+----------------------------------------------------------------------
+
+For Loop example:
+```
+FILE=$(ls *.docs)     # No spaces around =
+NEW="new"
+
+for SINGLE_FILE in $FILE
+do
+   echo "Renaming $SINGLE_FILE to $NEW-$SINGLE_FILE"
+    mv "$SINGLE_FILE" "$NEW-$SINGLE_FILE"
+done
+```
+- `FILE=$(ls *.docs)` → stores all .docs files (space-separated) in the variable FILE. If you run this without the $(..), bash would not recognize ls as a command. \
+- `for SINGLE_FILE in $FILE` → loops through each filename in FILE. \
+- `echo` → prints what will be renamed (safe to check first). \
+- `mv "$SINGLE_FILE" "$NEW-$SINGLE_FILE"` → renames the file, quotes handle spaces in filenames.
 
