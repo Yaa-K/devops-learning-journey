@@ -119,6 +119,86 @@ fi
 
 Pro tip: In VS code, to comment multiple lines, this is the shortcut `Ctrl + /`
 
+### Comparison Operators in Bash
+1. Numeric Comparisons
+These are for comparing numbers (integers).
+They only work inside [ ] or (( )) — not with normal operators like > or < (those are for strings).
+Operators:
+- `-eq` → equal to
+- `-ne` → not equal to
+- `-gt` → greater than
+- `-ge` → greater than or equal to
+- `-lt` → less than
+- `-le` → less than or equal to
 
+✅ Example:
+```
+x=10
+y=20
 
+if [ $x -lt $y ]; then
+    echo "$x is less than $y"
+fi
+```
 
+Or with (( )) (cleaner syntax):
+
+```
+if (( x < y )); then
+    echo "$x is less than $y"
+fi
+```
+
+Note : Inside double parentheses (( )), < and > are treated as numeric comparison operators, because (( )) is an arithmetic context.
+
+2. String Comparisons
+These are for comparing text values.
+Operators:
+
+- `=` → equal to (basic, works in [ ] or [[ ]])
+- `==` → equal to (extra features in [[ ]])
+- `!=` → not equal
+- `<` → less than, lexicographically (like alphabetical order)
+- `>` → greater than, lexicographically
+- `=~` → regex match (**only works inside [[ ]])
+- `-z` → string is empty (zero length)
+- `-n` → string is not empty
+
+✅ Example:
+```
+name="Alice"
+
+if [[ $name == "Alice" ]]; then
+    echo "Hello, Alice!"
+fi
+
+if [[ -z $name ]]; then
+    echo "Name is empty"
+fi
+```
+3. File Comparisons
+These check properties of files or directories.
+Operators:
+- `-e file `→ file exists
+- `-f file` → file is a regular file (not a directory, not a device)
+- `-d file `→ file is a directory
+- `-r file` → file is readable
+- `-w file` → file is writable
+- `-x file `→ file is executable
+- `-s file` → file exists and is not empty
+- `file1 -nt file2` → file1 is newer than file2
+- `file1 -ot file2` → file1 is older than file2
+- `file1 -ef file2 `→ both refer to the same file (same inode)
+
+✅ Example:
+```
+file="notes.txt"
+
+if [ -e $file ]; then
+    echo "$file exists"
+fi
+
+if [ -s $file ]; then
+    echo "$file is not empty"
+fi
+```
