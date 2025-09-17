@@ -395,6 +395,14 @@ you should always run:`sudo apt update` before installing anything with apt beca
 
 `which bash` shows the full path to the bash executable that your system will use when you run the shell. In other words it shows the path where the bash command is. It would return: `/bin/bash`
 
+ `read` read takes input (from the keyboard, a file, or a pipe) and stores it in variables. \
+Example:
+```
+read name
+```
 
+If you type: \
+`Yaa` \
+Then $name = Yaa. ✅
 
 
