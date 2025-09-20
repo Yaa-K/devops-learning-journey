@@ -452,5 +452,83 @@ greet_user "Yaa" "Linux" "23"
 - Parameter = variable (defined in function/script header).
 - Argument = actual value (provided when calling the function/script).
 
-  
+## CronJob
+**A cron job** is a scheduled task in Unix-like operating systems (Linux, macOS, etc.) that runs automatically at specified times and intervals.
 
+It’s managed by the **cron daemon** (crond), which constantly runs in the background and checks if there are any tasks (jobs) to execute at the scheduled times.
+
+
+**Cron** = a time-based job scheduler.Cron is the system that schedules and runs tasks automatically.
+**Cron job** = the actual command or script you schedule.A cron job is one specific task (a line inside the crontab) that tells cron what to run and when.
+**Crontab (cron table)** = the configuration file where you define your cron jobs.
+**The cron daemon (crond)** is always running in the background, checking every minute if a task should be executed.
+
+#### Some tasks cronjob can do
+<img width="808" height="384" alt="image" src="https://github.com/user-attachments/assets/c288552d-7553-4eb0-9da7-ba2161387562" />
+
+### Cron and At
+These are both schedulers in linux. \
+`Cron`
+- Purpose: Repeated, recurring tasks.
+- How it works: Runs jobs at fixed times/intervals (daily, weekly, every 5 minutes, etc.).
+- Configured in: crontab file.
+
+`At`
+- Purpose: One-time tasks.
+- How it works: Run a job once at a specified time.
+- Configured with: `at `command (not a file).
+
+`Anacron` is a Linux service used to run jobs periodically (daily, weekly, monthly) just like cron.
+- Main difference: It doesn’t require the computer to be running all the time.
+- If your machine was off when the job was scheduled, anacron will run it the next time the computer is on.
+
+### Cron installation
+```
+sudo apt install cron
+```
+ ### How to set a Crontab
+ A:Using a cron file:prepare jobs in a separate file, then load it. \
+`touch cronfile`Create a file with your cron jobs: \
+`crontab cronfile` Load it into cron\
+
+B:Editing directly with `crontab -e`: edit the crontab interactively. \
+`crontab -e` to edit the crontab
+`crontab -l` Check your jobs
+
+```
+* * * * * command-to-run or path/to/your/script
+| | | | |
+| | | | └── Day of week (0–7) (Sunday = 0 or 7)
+| | | └──── Month (1–12)
+| | └────── Day of month (1–31)
+| └──────── Hour (0–23)
+└────────── Minute (0–59)
+```
+#### Example Cron Jobs
+
+1. Run a script every day at 2:30 AM:
+```
+30 2 * * * /home/user/backup.sh
+```
+
+
+By default, when a cron job runs, any output (stdout or stderr) is sent to the user’s local mail inbox on the system.
+
+So if you schedule something like:
+```
+* * * * * echo "Hello from cron"
+```
+Cron will capture `"Hello from cron"` and send it to your system mailbox (you can check it with the `mail` command).
+
+When you run the mail command, type the mail number you want to open and press enter.
+
+Instead of letting output go to mail, you can redirect it to a file. For example:
+```
+echo "Hello from cron" >> /home/user/output.log
+```
+➝ This saves the message in output.log (either overwriting with > or appending with >>).
+
+
+
+
+  
