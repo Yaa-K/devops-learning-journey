@@ -15,3 +15,6 @@ Tasks:
 
 - Use ls -l to check file types and permissions.
 <img width="814" height="660" alt="image" src="https://github.com/user-attachments/assets/44d66929-5530-49b4-b992-3e5fd332ab4e" />
+
+-Find the hostname of your system and change it temporarily.
+<img width="718" height="179" alt="image" src="https://github.com/user-attachments/assets/b65db82e-46b4-4f78-bc92-b08ae0de661b" />
