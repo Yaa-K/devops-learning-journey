@@ -253,7 +253,17 @@ esac
 #### For loop and While loop
 `For` Loop \
 Best for: when you know how many times you want to run something.
+
 Syntax:
+```
+for VARIABLE in item1 item2 item3
+do
+   # commands using $VARIABLE
+done
+```
+- `VARIABLE` → takes each value in the list, one at a time.
+- `in item1 item2 item3` → the list of items you want to loop through.
+- `The do ... done block` → runs once for each item.
 ```
 for i in 1 2 3 4 5
 do
@@ -403,4 +413,44 @@ done
 - `for SINGLE_FILE in $FILE` → loops through each filename in FILE. \
 - `echo` → prints what will be renamed (safe to check first). \
 - `mv "$SINGLE_FILE" "$NEW-$SINGLE_FILE"` → renames the file, quotes handle spaces in filenames.
+
+  
+#### Fuctions
+**Functions** are a core part of shell scripting, because they let you reuse code instead of repeating yourself. \
+A function is a block of reusable code that can be called multiple times from different part of a script.
+
+**DRY** stands for Don’t Repeat Yourself.
+In programming (and in Bash scripting too), it means: Instead of writing the same code again and again, put it in a function (or a reusable block), and just call it whenever you need it.
+
+```
+my_function() {
+    echo "This is my function"
+}
+```
+
+When you run the above, you will not see any output. You would therefore have to call the function.
+You call the function by just typing out the fuction name
+```
+my function
+```
+
+Functions can take arguments just like scripts do.
+
+```
+greet_user() {
+    echo "Hello, $1!"
+    echo "You are learning $2."
+    echo "You are $3 years old."
+}
+
+greet_user "Yaa" "Linux" "23"
+```
+
+`$1`, `$2`, `$3` … represent positional arguments.
+
+#### Parameter vrs Argument
+- Parameter = variable (defined in function/script header).
+- Argument = actual value (provided when calling the function/script).
+
+  
 
