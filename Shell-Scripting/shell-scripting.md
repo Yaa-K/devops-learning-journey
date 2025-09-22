@@ -477,6 +477,9 @@ These are both schedulers in linux. \
 - Purpose: One-time tasks.
 - How it works: Run a job once at a specified time.
 - Configured with: `at `command (not a file).
+- Basic Syntax
+`at [time]`
+Then you type the command(s) you want to run, press Enter, and finish with CTRL+D
 
 `Anacron` is a Linux service used to run jobs periodically (daily, weekly, monthly) just like cron.
 - Main difference: It doesn’t require the computer to be running all the time.
@@ -528,7 +531,63 @@ echo "Hello from cron" >> /home/user/output.log
 ```
 ➝ This saves the message in output.log (either overwriting with > or appending with >>).
 
+#### Using Ranges in cron
+Format: X-Y (from X up to Y)  \
+Applies to any field.
+Examples:
+Run every minute between 1 AM and 5 AM
+```
+* 1-5 * * * command
+```
 
+Run at 10:00 AM every day from Monday (1) to Friday (5)
+```
+0 10 * * 1-5 command
+```
 
+Run every day in January to March
+```
+0 8 * 1-3 * command
+```
+
+#### Ranges with Steps
+You can combine ranges with `/` to skip values.
+Format: `X-Y/step`
+Examples:
+Every 2 hours between 8 AM and 4 PM
+```
+0 8-16/2 * * * command
+```
+(Runs at 8, 10, 12, 14, 16)
+
+Every 10 minutes from 0 to 50
+```
+0-50/10 * * * * command
+```
+(Runs at :00, :10, :20, :30, :40, :50)
+
+✅ So:
+- X-Y → continuous range
+- X-Y/step → range with interval steps
 
   
+```
+*/2 11,12 * * * command
+```
+
+🔹 Field by field
+`*/2` → every 2 minutes (0, 2, 4, …, 58)
+
+`11,12` → only during hours 11 AM and 12 PM
+
+`* (day of month)` → every day
+
+`* (month)` → every month
+
+`* (day of week`) → every day of the week
+
+#### What is /dev/null?
+- It’s called the null device or the bit bucket.
+- Anything written to /dev/null just disappears — it’s discarded.
+- If you read from it, it’s always empty (like an empty file).
+- Think of it as a black hole for data 🕳️ — whatever you send there is gone forever.
