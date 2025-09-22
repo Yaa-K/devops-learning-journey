@@ -591,3 +591,55 @@ Every 10 minutes from 0 to 50
 - Anything written to /dev/null just disappears — it’s discarded.
 - If you read from it, it’s always empty (like an empty file).
 - Think of it as a black hole for data 🕳️ — whatever you send there is gone forever.
+
+#### Text editors in Linux
+They’re all text editors in Linux:
+- `nano` → simple, beginner-friendly.
+- `pico` → older version of nano.
+- `vi` → classic, powerful but tricky.
+- `vim` → “Vi Improved” (modern vi, with more features).
+- `emacs` → very powerful, customizable, almost like an IDE. \
+👉 Basically: use nano if you’re new, vim if you want power, emacs if you want a full toolbox.
+
+#### vi -text editor
+🔹 Basics
+vi filename → open/create a file
+Modes:
+Command mode (default, for navigation/commands)
+Insert mode (for typing text)
+
+🔹 Common Keys
+`i` → switch to insert mode (start typing)
+`I` - Would allow you to start typing at the beginning of the file
+`a` → append → puts you in insert mode after the cursor.
+`A` → append at end of line → jumps to the end of the current line and puts you in insert mode.
+`o` → opens a new line below the current one and puts you in insert mode.
+`O` → opens a new line above the current one and puts you in insert mode.
+`gg` = go to top
+`G` = go to bottom
+`h` → move left by one character.
+`l` → move right by one character.
+`j` → move down one line.
+`k` → move up one line.
+`^` → moves the cursor to the first non-blank character of the current line. This doesn't put you in insert mode.
+`$` → moves the cursor to the end of the current line (last character).This doesn't put you in insert mode.
+`w` → jump to the beginning of the next word.
+`e` → jump to the end of the current or next word.
+`dd` → delete the current line (cuts it).
+`dw` → delete from the cursor to the start of the next word.
+`b` → jump backward to the beginning of a word
+`B` → jump backward to the beginning of a WORD
+`x` → delete the character under the cursor (like backspace but forward).
+`X` → deletes the character before the cursor (like a true backspace).
+`Esc` → go back to command mode
+`:w` → save (write)
+`:q` → quit
+`:wq` → save & quit
+`:q!` → quit without saving
+
+
+👉 Think of it like this:
+
+Open file
+Press `i` → type your text
+Press Esc :wq → save & exit
