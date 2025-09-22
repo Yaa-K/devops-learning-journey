@@ -458,10 +458,10 @@ greet_user "Yaa" "Linux" "23"
 It’s managed by the **cron daemon** (crond), which constantly runs in the background and checks if there are any tasks (jobs) to execute at the scheduled times.
 
 
-**Cron** = a time-based job scheduler.Cron is the system that schedules and runs tasks automatically.
-**Cron job** = the actual command or script you schedule.A cron job is one specific task (a line inside the crontab) that tells cron what to run and when.
-**Crontab (cron table)** = the configuration file where you define your cron jobs.
-**The cron daemon (crond)** is always running in the background, checking every minute if a task should be executed.
+- **Cron** = a time-based job scheduler.Cron is the system that schedules and runs tasks automatically.
+- **Cron job** = the actual command or script you schedule.A cron job is one specific task (a line inside the crontab) that tells cron what to run and when.
+- **Crontab (cron table)** = the configuration file where you define your cron jobs.
+- **The cron daemon (crond)** is always running in the background, checking every minute if a task should be executed.
 
 #### Some tasks cronjob can do
 <img width="808" height="384" alt="image" src="https://github.com/user-attachments/assets/c288552d-7553-4eb0-9da7-ba2161387562" />
@@ -576,15 +576,11 @@ Every 10 minutes from 0 to 50
 ```
 
 🔹 Field by field
-`*/2` → every 2 minutes (0, 2, 4, …, 58)
-
-`11,12` → only during hours 11 AM and 12 PM
-
-`* (day of month)` → every day
-
-`* (month)` → every month
-
-`* (day of week`) → every day of the week
+- `*/2` → every 2 minutes (0, 2, 4, …, 58)
+- `11,12` → only during hours 11 AM and 12 PM
+- `* (day of month)` → every day
+- `* (month)` → every month
+- `* (day of week`) → every day of the week
 
 #### What is /dev/null?
 - It’s called the null device or the bit bucket.
@@ -603,43 +599,43 @@ They’re all text editors in Linux:
 
 #### vi -text editor
 🔹 Basics
-vi filename → open/create a file
+- vi filename → open/create a file
 Modes:
-Command mode (default, for navigation/commands)
-Insert mode (for typing text)
+- Command mode (default, for navigation/commands)
+- Insert mode (for typing text)
 
 🔹 Common Keys
-`i` → switch to insert mode (start typing)
-`I` - Would allow you to start typing at the beginning of the file
-`a` → append → puts you in insert mode after the cursor.
-`A` → append at end of line → jumps to the end of the current line and puts you in insert mode.
-`o` → opens a new line below the current one and puts you in insert mode.
-`O` → opens a new line above the current one and puts you in insert mode.
-`gg` = go to top
-`G` = go to bottom
-`h` → move left by one character.
-`l` → move right by one character.
-`j` → move down one line.
-`k` → move up one line.
-`^` → moves the cursor to the first non-blank character of the current line. This doesn't put you in insert mode.
-`$` → moves the cursor to the end of the current line (last character).This doesn't put you in insert mode.
-`w` → jump to the beginning of the next word.
-`e` → jump to the end of the current or next word.
-`dd` → delete the current line (cuts it).
-`dw` → delete from the cursor to the start of the next word.
-`b` → jump backward to the beginning of a word
-`B` → jump backward to the beginning of a WORD
-`x` → delete the character under the cursor (like backspace but forward).
-`X` → deletes the character before the cursor (like a true backspace).
-`Esc` → go back to command mode
-`:w` → save (write)
-`:q` → quit
-`:wq` → save & quit
-`:q!` → quit without saving
+- `i` → switch to insert mode (start typing)
+- `I` - Would allow you to start typing at the beginning of the file
+- `a` → append → puts you in insert mode after the cursor.
+- `A` → append at end of line → jumps to the end of the current line and puts you in insert mode.
+- `o` → opens a new line below the current one and puts you in insert mode.
+- `O` → opens a new line above the current one and puts you in insert mode.
+- `gg` = go to top
+- `G` = go to bottom
+- `h` → move left by one character.
+- `l` → move right by one character.
+- `j` → move down one line.
+- `k` → move up one line.
+- `^` → moves the cursor to the first non-blank character of the current line. This doesn't put you in insert mode.
+- `$` → moves the cursor to the end of the current line (last character).This doesn't put you in insert mode.
+- `w` → jump to the beginning of the next word.
+- `e` → jump to the end of the current or next word.
+- `dd` → delete the current line (cuts it).
+- `dw` → delete from the cursor to the start of the next word.
+- `b` → jump backward to the beginning of a word
+- `B` → jump backward to the beginning of a WORD
+- `x` → delete the character under the cursor (like backspace but forward).
+- `X` → deletes the character before the cursor (like a true backspace).
+- `Esc` → go back to command mode
+- `:w` → save (write)
+- `:q` → quit
+- `:wq` → save & quit
+- `:q!` → quit without saving
 
 
 👉 Think of it like this:
 
 Open file
-Press `i` → type your text
-Press Esc :wq → save & exit
+- Press `i` → type your text
+- Press Esc :wq → save & exit
