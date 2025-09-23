@@ -22,6 +22,9 @@ Create a directory project and a file inside it.
 <img width="613" height="265" alt="image" src="https://github.com/user-attachments/assets/c9a6aa02-d15a-467f-bfc2-e269ec1fc81a" />
 
 Change ownership of project to another user (student1).
-<img width="519" height="181" alt="image" src="https://github.com/user-attachments/assets/7aa41861-e1af-49a2-8fd1-67eb861f09d3" />
+<img width="702" height="114" alt="image" src="https://github.com/user-attachments/assets/06074879-7527-4141-90ba-d3ce3202d0ab" />
 
 Give read/write to group but no access to others.
+<img width="611" height="56" alt="image" src="https://github.com/user-attachments/assets/8edda502-f717-4e4c-9717-25b456fa2551" />
+
+<img width="715" height="56" alt="image" src="https://github.com/user-attachments/assets/2a9cafc9-406d-4b46-a0ce-18c67eb4e5e6" />
