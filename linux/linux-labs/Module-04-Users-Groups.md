@@ -14,6 +14,7 @@ Create a group devs and add student1 to it.
 <img width="628" height="104" alt="image" src="https://github.com/user-attachments/assets/c22b51aa-e306-458c-8a07-626da600d74b" />
 
 Check groups for student1.
+<img width="443" height="72" alt="image" src="https://github.com/user-attachments/assets/d6b17071-5fc4-4b33-8161-3be2ee134414" />
 
 Switch to student1 and confirm.
 <img width="648" height="171" alt="image" src="https://github.com/user-attachments/assets/56a34107-a423-4943-84ac-220b1c6bc913" />
