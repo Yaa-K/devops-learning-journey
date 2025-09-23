@@ -16,5 +16,6 @@ Create a group devs and add student1 to it.
 Check groups for student1.
 
 Switch to student1 and confirm.
+<img width="648" height="171" alt="image" src="https://github.com/user-attachments/assets/56a34107-a423-4943-84ac-220b1c6bc913" />
 
 Delete student1.
