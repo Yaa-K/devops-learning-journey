@@ -20,3 +20,4 @@ Switch to student1 and confirm.
 <img width="648" height="171" alt="image" src="https://github.com/user-attachments/assets/56a34107-a423-4943-84ac-220b1c6bc913" />
 
 Delete student1.
+<img width="505" height="41" alt="image" src="https://github.com/user-attachments/assets/ab3a1add-7157-4ced-8efe-1a4ac0c10337" />
