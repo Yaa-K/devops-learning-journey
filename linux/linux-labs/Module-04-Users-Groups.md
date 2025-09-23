@@ -11,6 +11,7 @@ Set a password for student1.
 <img width="628" height="145" alt="image" src="https://github.com/user-attachments/assets/d506c26a-0892-49f9-93ec-4a0f5864fb9c" />
 
 Create a group devs and add student1 to it.
+<img width="628" height="104" alt="image" src="https://github.com/user-attachments/assets/c22b51aa-e306-458c-8a07-626da600d74b" />
 
 Check groups for student1.
 
