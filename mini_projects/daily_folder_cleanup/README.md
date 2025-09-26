@@ -43,7 +43,7 @@ This project was given as part of the Women Techsters Fellowship – September 2
    
 8.We needed to iterate the files so they would be moved to the new file so I choose the for loop because we know the number of times the loop needs to iterate through the files. When the iteration is over, "Cleanup run on <date>" would be printed in cleanup.log file. I saved my changes by pressing ctrl+O and ctrl+x
   <p align="center">
-  <img width="1434" height="648" alt="Screenshot 2025-09-26 003849" src="https://github.com/user-attachments/assets/727b29db-4954-48ce-8c21-3fb5cf3629e9" />
+ <img width="1920" height="1008" alt="Screenshot 2025-09-26 011141" src="https://github.com/user-attachments/assets/944b0a01-c8f2-4f56-a3ec-1fdea2919c3e" />
 </p>
 9. To make this script executable, I used the chmod command to modify the permissions on the file
   <p align="center">
@@ -104,6 +104,7 @@ echo "cleanup ran on $(date)" >> ~/cleanup.log
 ```
 ## Future improvements
 1. Instead of using the for loop I could simply use the mv command to just move all the files in the archive files\[mv ~/old\_files/\* ~/archive\_files/]
+
 
 
 
