@@ -26,20 +26,20 @@ This project was given as part of the Women Techsters Fellowship – September 2
 
 ## 🚀 Method
 
-1. I created a directory(old\_files) in my home directory using the mkdir command.
+1. I created a directory(`old\_files`) in my home directory using the mkdir command.
 <p align="center">
 <img width="1019" height="434" alt="Screenshot 2025-09-26 003150" src="https://github.com/user-attachments/assets/8fc40aef-0315-4349-b19a-924be5a55167" />
 </p>
 
 2. I created another directory(archive\_files) also in my home directory.
 
-4. Then I created some dummy files in old\_files dir so I would see the results when I run the code. I used the touch command and brace expansion to create 5 files at once
+4. Then I created some dummy files in `old\_files` dir so I would see the results when I run the code. I used the touch command and brace expansion to create 5 files at once
  <p align="center">
   <img width="1170" height="786" alt="Screenshot 2025-09-26 003937" src="https://github.com/user-attachments/assets/97c98af5-f16b-42f1-b542-d94c10ff8283" />
 </p>
-6. I moved forward to create a script file(cleanup.sh) using nano. This would open the nano file editor almost immediately so I can make 
+6. I moved forward to create a script file(`cleanup.sh`) using nano. This would open the nano file editor almost immediately so I can make 
 
-7. In the first line, I wrote #!/bin/bash so that the bash interpreter can recognize that this is a script file.
+7. In the first line, I wrote `#!/bin/bash` so that the bash interpreter can recognize that this is a script file.
    
 8.We needed to iterate the files so they would be moved to the new file so I choose the for loop because we know the number of times the loop needs to iterate through the files. When the iteration is over, "Cleanup run on <date>" would be printed in cleanup.log file. I saved my changes by pressing ctrl+O and ctrl+x
   <p align="center">
@@ -81,13 +81,13 @@ mv "$FILE" ~/archive\_files
 ```
 `~` = expands to my home directory
 `~/old\_files/`= means that the old\_files are in my home directory
-`\*`=matches all the files and folders inside old\_files directory.
+`\*`=matches all the files and folders inside `old\_files` directory.
 
-So if old-files has these files:
+So if `old-files` has these files:
 ```
 file1.txt file2.txt file3.txt
 ```
-The ~/old\_files/\* expands into:
+The `~/old\_files/\*` expands into:
 ```
 /home/yaa/old\_files/file1.txt
 /home/yaa/old\_files/file2.txt
@@ -103,7 +103,8 @@ Also, the cronjob run well but the date didn't print in the log, so instead of d
 echo "cleanup ran on $(date)" >> ~/cleanup.log
 ```
 ## Future improvements
-1. Instead of using the for loop I could simply use the mv command to just move all the files in the archive files\[mv ~/old\_files/\* ~/archive\_files/]
+1. Instead of using the for loop I could simply use the mv command to just move all the files in the archive files\[`mv ~/old\_files/\* ~/archive\_files/`]
+
 
 
 
