@@ -458,10 +458,10 @@ greet_user "Yaa" "Linux" "23"
 It’s managed by the **cron daemon** (crond), which constantly runs in the background and checks if there are any tasks (jobs) to execute at the scheduled times.
 
 
-**Cron** = a time-based job scheduler.Cron is the system that schedules and runs tasks automatically.
-**Cron job** = the actual command or script you schedule.A cron job is one specific task (a line inside the crontab) that tells cron what to run and when.
-**Crontab (cron table)** = the configuration file where you define your cron jobs.
-**The cron daemon (crond)** is always running in the background, checking every minute if a task should be executed.
+- **Cron** = a time-based job scheduler.Cron is the system that schedules and runs tasks automatically.
+- **Cron job** = the actual command or script you schedule.A cron job is one specific task (a line inside the crontab) that tells cron what to run and when.
+- **Crontab (cron table)** = the configuration file where you define your cron jobs.
+- **The cron daemon (crond)** is always running in the background, checking every minute if a task should be executed.
 
 #### Some tasks cronjob can do
 <img width="808" height="384" alt="image" src="https://github.com/user-attachments/assets/c288552d-7553-4eb0-9da7-ba2161387562" />
@@ -477,6 +477,9 @@ These are both schedulers in linux. \
 - Purpose: One-time tasks.
 - How it works: Run a job once at a specified time.
 - Configured with: `at `command (not a file).
+- Basic Syntax
+`at [time]`
+Then you type the command(s) you want to run, press Enter, and finish with CTRL+D
 
 `Anacron` is a Linux service used to run jobs periodically (daily, weekly, monthly) just like cron.
 - Main difference: It doesn’t require the computer to be running all the time.
@@ -527,6 +530,172 @@ Instead of letting output go to mail, you can redirect it to a file. For example
 echo "Hello from cron" >> /home/user/output.log
 ```
 ➝ This saves the message in output.log (either overwriting with > or appending with >>).
+
+#### Using Ranges in cron
+Format: X-Y (from X up to Y)  \
+Applies to any field.
+Examples:
+Run every minute between 1 AM and 5 AM
+```
+* 1-5 * * * command
+```
+
+Run at 10:00 AM every day from Monday (1) to Friday (5)
+```
+0 10 * * 1-5 command
+```
+
+Run every day in January to March
+```
+0 8 * 1-3 * command
+```
+
+#### Ranges with Steps
+You can combine ranges with `/` to skip values.
+Format: `X-Y/step`
+Examples:
+Every 2 hours between 8 AM and 4 PM
+```
+0 8-16/2 * * * command
+```
+(Runs at 8, 10, 12, 14, 16)
+
+Every 10 minutes from 0 to 50
+```
+0-50/10 * * * * command
+```
+(Runs at :00, :10, :20, :30, :40, :50)
+
+✅ So:
+- X-Y → continuous range
+- X-Y/step → range with interval steps
+
+  
+```
+*/2 11,12 * * * command
+```
+
+🔹 Field by field
+- `*/2` → every 2 minutes (0, 2, 4, …, 58)
+- `11,12` → only during hours 11 AM and 12 PM
+- `* (day of month)` → every day
+- `* (month)` → every month
+- `* (day of week`) → every day of the week
+
+#### What is /dev/null?
+- It’s called the null device or the bit bucket.
+- Anything written to /dev/null just disappears — it’s discarded.
+- If you read from it, it’s always empty (like an empty file).
+- Think of it as a black hole for data 🕳️ — whatever you send there is gone forever.
+
+#### Text editors in Linux
+They’re all text editors in Linux:
+- `nano` → simple, beginner-friendly.
+- `pico` → older version of nano.
+- `vi` → classic, powerful but tricky.
+- `vim` → “Vi Improved” (modern vi, with more features).
+- `emacs` → very powerful, customizable, almost like an IDE. \
+👉 Basically: use nano if you’re new, vim if you want power, emacs if you want a full toolbox.
+
+#### vi -text editor
+🔹 Basics
+- vi filename → open/create a file
+Modes:
+- Command mode (default, for navigation/commands)
+- Insert mode (for typing text)
+
+🔹 Common Keys
+- `i` → switch to insert mode (start typing)
+- `I` - Would allow you to start typing at the beginning of the file
+- `a` → append → puts you in insert mode after the cursor.
+- `A` → append at end of line → jumps to the end of the current line and puts you in insert mode.
+- `o` → opens a new line below the current one and puts you in insert mode.
+- `O` → opens a new line above the current one and puts you in insert mode.
+- `gg` = go to top
+- `G` = go to bottom
+- `h` → move left by one character.
+- `l` → move right by one character.
+- `j` → move down one line.
+- `k` → move up one line.
+- `^` → moves the cursor to the first non-blank character of the current line. This doesn't put you in insert mode.
+- `$` → moves the cursor to the end of the current line (last character).This doesn't put you in insert mode.
+- `w` → jump to the beginning of the next word.
+- `e` → jump to the end of the current or next word.
+- `r` → replace the character under the cursor with the next key you type.
+- `cw` → change word.
+- `S` (uppercase S) → substitute entire line.
+- `CC` → delete the whole line and start typing.
+- `s` → delete 1 character and start typing.
+- `yy` → yank (copy) the whole line in vi/vim.
+- `p` → paste after/below the cursor (or line).
+- `P` → paste before/above the cursor (or line).
+- `dd` → delete the current line (cuts it).
+- `dw` → delete from the cursor to the start of the next word.
+- `D` (uppercase) → delete from the cursor position to the end of the current line.
+- `b` → jump backward to the beginning of a word
+- `B` → jump backward to the beginning of a WORD
+- `x` → delete the character under the cursor (like backspace but forward).
+- `X` → deletes the character before the cursor (like a true backspace).
+- `Esc` → go back to command mode
+- `:w` → save (write)
+- `:q` → quit
+- `:wq` → save & quit
+- `:q!` → quit without saving
+
+#### To search in the vi
+- `/` → start a forward search.
+- `?` → start a backward search in vi/vim.
+Type the word/pattern you want and press Enter → the cursor jumps to the first match after your position.
+👉 Extras:
+- `n` → jump to the next match.
+- `N` → jump to the previous match.
+
+- `:%s/old/new/g`→ replaces all occurrences in the whole file.
+- `:s/old/new/g`→ replaces all old with new in that line.
+-` :%s/old/new/gc` = Search the entire file for "old", and for every occurrence, ask me if I want to replace it with "new".
+- `u` → undo
+- `Ctrl+r `→ Redo
+- `:set number` → shows line numbers on the left.
+- `:set nonumber` → hides the line numbers.
+
+- `V` (uppercase V) = Visual Line mode.It selects the entire line where the cursor is.You can move up/down (j/k) to select multiple full lines.
+
+Open file
+- Press `i` → type your text
+- Press Esc :wq → save & exit
+  
+  ### Why DevOps Engineers Should Know Both Nano and Vi
+- **Server reality**: On production servers, sometimes only vi is guaranteed to be installed. You don’t want to get stuck because nano isn’t there.
+- **Speed & Power**: For small, quick edits → nano. For big config changes, regex search/replace, or debugging code → vi.
+- **Collaboration**: Other engineers may use vi by default, so you should be comfortable with it.
+- **Emergencies**v: If you’re fixing a live server issue at 2AM, and only vi is available, you’ll need to move fast and not panic.
+--------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

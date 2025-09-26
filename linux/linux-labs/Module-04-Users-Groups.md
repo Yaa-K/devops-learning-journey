@@ -5,13 +5,19 @@ Objective: Manage users, groups, and permissions.
 Tasks:
 
 Create a user student1 with adduser.
+<img width="835" height="97" alt="image" src="https://github.com/user-attachments/assets/63566762-6fc2-481d-b7b9-8d8d9078a3e0" />
 
 Set a password for student1.
+<img width="628" height="145" alt="image" src="https://github.com/user-attachments/assets/d506c26a-0892-49f9-93ec-4a0f5864fb9c" />
 
 Create a group devs and add student1 to it.
+<img width="628" height="104" alt="image" src="https://github.com/user-attachments/assets/c22b51aa-e306-458c-8a07-626da600d74b" />
 
 Check groups for student1.
+<img width="443" height="72" alt="image" src="https://github.com/user-attachments/assets/d6b17071-5fc4-4b33-8161-3be2ee134414" />
 
 Switch to student1 and confirm.
+<img width="648" height="171" alt="image" src="https://github.com/user-attachments/assets/56a34107-a423-4943-84ac-220b1c6bc913" />
 
 Delete student1.
+<img width="505" height="41" alt="image" src="https://github.com/user-attachments/assets/ab3a1add-7157-4ced-8efe-1a4ac0c10337" />
