@@ -28,11 +28,11 @@ Root/Administrative user is the superuser in Linux and has full control over the
 Use sudo to temporarily become root for a command.
 
 # Some Linux Commands
-`pwd` #print working directory: It is useful when you get lost in a system 
+`pwd` #print working directory: It is useful when you get lost in a system \
 `cd <dir name>` #change directory \
 `cd ` #change to home directory\
 `cd ~` #change to home directory\
-`cd /` change to home directory\
+`cd /` change to root directory\
 `cd /home/username` #change to home directory\
 `cd ..` to  go a step back to previous directory\
 `cd ../..` to go back two steps
