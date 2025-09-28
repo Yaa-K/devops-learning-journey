@@ -159,23 +159,23 @@ Example:
 `id<username>` Shows your user ID (UID), group ID (GID), and groups you belong to \
 `deluser` to delete a user \
 `sudo password <username>` to change or set new password.\
-`sudo !!` also used to change password\
-`sudo usermod` to change the username\
-`sudo usermod -l new_username old_username` to modify an existing user account in Linux.\
-`sudo usermod -aG <groupname> <username>`\
--a → append (otherwise the user will be removed from all other groups not listed).\
+`sudo !!` It re-runs your last command \
+`sudo usermod` to change the username \
+`sudo usermod -l new_username old_username` to modify an existing user account in Linux. \
+`sudo usermod -aG <groupname> <username>` \
+-a → append (otherwise the user will be removed from all other groups not listed). \
 -G → specify one or more supplementary groups (comma-separated).\
-`groupadd` to add a new group\
-`deluser` to delete a user\
+`groupadd` to add a new group \
+`deluser` to delete a user \
 `sudo userdel alex` Removes the user account. Leaves the user’s home directory and files behind.
 deluser leaves a notification while userdel runs silently.
 
-###Difference between `su -username` and `sudo su username`
-`su - username`\
+### Difference between `su -username` and `sudo su username`
+`su - username` \
 Switch User: Changes you to username.\
 Prompts you for that user’s password (not your own).
 
-`sudo su - username`\
+`sudo su - username` \
 Uses sudo first: Runs the su - username command with root privileges.\
 Prompts you for your password (the sudo user’s password).
 
