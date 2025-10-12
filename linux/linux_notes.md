@@ -404,5 +404,20 @@ read name
 If you type: \
 `Yaa` \
 Then $name = Yaa. ✅
+-------------------------------------------------------------------
+✅ `diff` Compares two files line by line. Shows the differences only.Output is textual and compact
 
+Example:
+```
+diff file1.txt file2.txt
+```
+You’ll see lines added, removed, or changed.
 
+✅ `sdiff` Also compares two files, but shows them side-by-side. Easier for visual comparison
+
+Highlights differences across both columns
+
+Example:
+```
+sdiff file1.txt file2.txt
+```
