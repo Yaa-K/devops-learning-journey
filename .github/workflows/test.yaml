@@ -1,12 +1,17 @@
 name: Hello world job
-on:
-push:
+ 
+on: 
+
+  push:
+
     branches:
 
       - main
 
 jobs:
-hello-world:
+
+  hello-world:
+
     runs-on: ubuntu-latest
 
     steps:
@@ -16,8 +21,8 @@ hello-world:
          run: echo "hello world"
  
  
+  how-are-you:
 
-how-are-you:
      runs-on: ubuntu-latest
 
      steps:
@@ -25,3 +30,4 @@ how-are-you:
        - name: ask how the person is
 
          run: echo "how are you?"    
+ 
